@@ -1,1 +1,1 @@
-# DecoFormer:CrossFormer with DLinear Model
+# DecoFormer:CrossFormer with Decomposition Model

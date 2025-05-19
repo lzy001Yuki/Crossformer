@@ -5,11 +5,11 @@ import torch.nn as nn
 from torch import optim
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel
-import src.TSALayer
-from src.Decoformer import Decoformer
-from src.DSW import DSW
-from src.HED import Decoder, Encoder
-from src.dataloader import DataLoader
+import old_src.TSALayer
+from old_src.Decoformer import Decoformer
+from old_src.DSW import DSW
+from old_src.HED import Decoder, Encoder
+from old_src.dataloader import DataLoader
 
 import os
 import time

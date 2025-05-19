@@ -7,7 +7,7 @@ from cross_models.attn import FullAttention, AttentionLayer, TwoStageAttentionLa
 
 class DecoderLayer(nn.Module):
     '''
-    The decoder layer of Crossformer, each layer will make a prediction at its scale
+    The decoder layer of src, each layer will make a prediction at its scale
     '''
 
     def __init__(self, seg_len, d_model, n_heads, d_ff=None, dropout=0.1, out_seg_num=10, factor=10):
@@ -51,7 +51,7 @@ class DecoderLayer(nn.Module):
 
 class Decoder(nn.Module):
     '''
-    The decoder of Crossformer, making the final prediction by adding up predictions at each scale
+    The decoder of src, making the final prediction by adding up predictions at each scale
     '''
 
     def __init__(self, seg_len, d_layers, d_model, n_heads, d_ff, dropout, \

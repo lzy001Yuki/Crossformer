@@ -1,6 +1,7 @@
 from data.data_loader import Dataset_MTS
 from cross_exp.exp_basic import Exp_Basic
 from cross_models.cross_former import Crossformer
+import matplotlib.pyplot as plt
 
 from utils.tools import EarlyStopping, adjust_learning_rate
 from utils.metrics import metric
@@ -113,7 +114,10 @@ class Exp_crossformer(Exp_Basic):
         model_optim = self._select_optimizer()
         criterion =  self._select_criterion()
 
-        print("training start......")
+        print("start training......")
+        total_train = []
+        total_vali = []
+        total_test = []
         for epoch in range(self.args.train_epochs):
             time_now = time.time()
             iter_count = 0
@@ -148,6 +152,9 @@ class Exp_crossformer(Exp_Basic):
 
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
                 epoch + 1, train_steps, train_loss, vali_loss, test_loss))
+            total_vali.append(vali_loss)
+            total_test.append(test_loss)
+            total_train.append(train_loss)
             early_stopping(vali_loss, self.model, path)
             if early_stopping.early_stop:
                 print("Early stopping")
@@ -159,6 +166,7 @@ class Exp_crossformer(Exp_Basic):
         self.model.load_state_dict(torch.load(best_model_path))
         state_dict = self.model.module.state_dict() if isinstance(self.model, DataParallel) else self.model.state_dict()
         torch.save(state_dict, path+'/'+'checkpoint.pth')
+        show_loss(total_train, total_vali, total_test)
         
         return self.model
 
@@ -274,3 +282,36 @@ class Exp_crossformer(Exp_Basic):
             np.save(folder_path+'true.npy', trues)
 
         return mae, mse, rmse, mape, mspe
+
+
+def show_loss(train_losses, vali_losses, test_losses, save_path='./loss_plot.png'):
+    # 确保所有loss列表长度一致
+    assert len(train_losses) == len(vali_losses) == len(test_losses), "所有loss列表长度必须相同"
+
+    epochs = range(1, len(train_losses) + 1)
+
+    plt.figure(figsize=(10, 6))
+
+    # 绘制三条曲线
+    plt.plot(epochs, train_losses, 'b-', label='Training loss')
+    plt.plot(epochs, vali_losses, 'g-', label='Validation loss')
+    plt.plot(epochs, test_losses, 'r-', label='Test loss')
+
+    # 添加标题和标签
+    plt.title('Training, Validation and Test Loss')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+
+    # 添加网格
+    plt.grid(True)
+
+    # 确保目录存在
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    # 保存图像
+    plt.savefig(save_path)
+    plt.close()
+
+    print(f"Loss plot saved to {save_path}")
+
