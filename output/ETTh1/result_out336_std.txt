@@ -1,0 +1,63 @@
+Args in experiment:
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=336, seg_len=6, win_size=2, factor=10, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Use GPU: cuda:0
+>>>>>>>start training : Crossformer_ETTh1_il96_ol336_sl6_win2_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 8209
+val 2545
+test 2545
+	iters: 100, epoch: 1 | loss: 0.6735857
+	speed: 0.0509s/iter; left time: 256.5335s
+	iters: 200, epoch: 1 | loss: 0.5720289
+	speed: 0.0483s/iter; left time: 238.8232s
+Epoch: 1 cost time: 12.698730945587158
+Epoch: 1, Steps: 257 | Train Loss: 0.6488867 Vali Loss: 1.1336242 Test Loss: 0.6109139
+Validation loss decreased (inf --> 1.133624).  Saving model ...
+	iters: 100, epoch: 2 | loss: 0.4467170
+	speed: 0.0472s/iter; left time: 225.9711s
+	iters: 200, epoch: 2 | loss: 0.3939478
+	speed: 0.0477s/iter; left time: 223.4571s
+Epoch: 2 cost time: 12.207892894744873
+Epoch: 2, Steps: 257 | Train Loss: 0.4466259 Vali Loss: 1.1196284 Test Loss: 0.5597660
+Validation loss decreased (1.133624 --> 1.119628).  Saving model ...
+Updating learning rate to 5e-05
+	iters: 100, epoch: 3 | loss: 0.4482756
+	speed: 0.0474s/iter; left time: 214.6026s
+	iters: 200, epoch: 3 | loss: 0.4270105
+	speed: 0.0470s/iter; left time: 208.2085s
+Epoch: 3 cost time: 12.12350606918335
+Epoch: 3, Steps: 257 | Train Loss: 0.4016772 Vali Loss: 1.1322308 Test Loss: 0.6527685
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 4 | loss: 0.3803862
+	speed: 0.0465s/iter; left time: 198.4896s
+	iters: 200, epoch: 4 | loss: 0.3873731
+	speed: 0.0471s/iter; left time: 196.3358s
+Epoch: 4 cost time: 11.858849048614502
+Epoch: 4, Steps: 257 | Train Loss: 0.3821733 Vali Loss: 1.0989392 Test Loss: 0.6806533
+Validation loss decreased (1.119628 --> 1.098939).  Saving model ...
+Updating learning rate to 2.5e-05
+	iters: 100, epoch: 5 | loss: 0.3706045
+	speed: 0.0478s/iter; left time: 191.6588s
+	iters: 200, epoch: 5 | loss: 0.3374179
+	speed: 0.0467s/iter; left time: 182.7639s
+Epoch: 5 cost time: 12.174188137054443
+Epoch: 5, Steps: 257 | Train Loss: 0.3668301 Vali Loss: 1.1236087 Test Loss: 0.6679235
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 6 | loss: 0.3451963
+	speed: 0.0469s/iter; left time: 176.0844s
+	iters: 200, epoch: 6 | loss: 0.3219090
+	speed: 0.0468s/iter; left time: 171.2671s
+Epoch: 6 cost time: 12.079818487167358
+Epoch: 6, Steps: 257 | Train Loss: 0.3589879 Vali Loss: 1.1136835 Test Loss: 0.6593637
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 1.25e-05
+	iters: 100, epoch: 7 | loss: 0.3636111
+	speed: 0.0464s/iter; left time: 162.3751s
+	iters: 200, epoch: 7 | loss: 0.3413537
+	speed: 0.0470s/iter; left time: 159.8257s
+Epoch: 7 cost time: 11.929312467575073
+Epoch: 7, Steps: 257 | Train Loss: 0.3520765 Vali Loss: 1.1016569 Test Loss: 0.6701600
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Crossformer_ETTh1_il96_ol336_sl6_win2_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2545
+mse:0.6816306710243225, mae:0.6306871175765991

@@ -1,1 +1,3 @@
-# DecoFormer:CrossFormer with Decomposition Model
+# DecoFormer:CrossFormer with DLinear Model
+
+This project mainly addresses Time Series Forecasting(TSF) based on a fasciniating model [CrossFormer](https://github.com/Thinklab-SJTU/Crossformer) (ICLR2023). However, considering TSF is time-related, whereas Crossformer's design of Cross-Time Stage(CTS) applies time-invariant Multi-Attention Mechanism, this work abandons CTS and coalesces another model called Decomposition Linear (also noted as *Dlinear*). Consequently, the result shows that without losing accuracy, Decoformer can handle TSF with a simpler structure. What's more, it has better performance on Long-term Forcasting.
