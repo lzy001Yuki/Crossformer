@@ -10,9 +10,12 @@ class DecoderLayer(nn.Module):
     The decoder layer of Crossformer, each layer will make a prediction at its scale
     '''
 
-    def __init__(self, seg_len, d_model, n_heads, d_ff=None, dropout=0.1, out_seg_num=10, factor=10):
+    # seq_len, pred_len, channel, win_size, seg_len, seg_num, factor, d_model, n_heads, d_ff=None, dropout=0.1
+    def __init__(self, in_len, out_len, data_dim, dwin_size, seg_len, d_model, n_heads, d_ff=None, dropout=0.1,
+                 out_seg_num=10, factor=10):
         super(DecoderLayer, self).__init__()
-        self.self_attention = TwoStageAttentionLayer(out_seg_num, factor, d_model, n_heads, \
+        self.self_attention = TwoStageAttentionLayer(in_len, out_len, data_dim, dwin_size, seg_len, out_seg_num, factor,
+                                                     d_model, n_heads, \
                                                      d_ff, dropout)
         self.cross_attention = AttentionLayer(d_model, n_heads, dropout=dropout)
         self.norm1 = nn.LayerNorm(d_model)
@@ -49,20 +52,22 @@ class DecoderLayer(nn.Module):
         return dec_output, layer_predict
 
 
+# in_len, out_len, data_dim, dwin_size, seg_len, d_model, n_heads, d_ff=None, dropout=0.1, out_seg_num = 10, factor = 10
 class Decoder(nn.Module):
     '''
     The decoder of Crossformer, making the final prediction by adding up predictions at each scale
     '''
 
-    def __init__(self, seg_len, d_layers, d_model, n_heads, d_ff, dropout, \
+    def __init__(self, in_len, out_len, data_dim, dwin_size, seg_len, d_layers, d_model, n_heads, d_ff, dropout, \
                  router=False, out_seg_num=10, factor=10):
         super(Decoder, self).__init__()
 
         self.router = router
         self.decode_layers = nn.ModuleList()
         for i in range(d_layers):
-            self.decode_layers.append(DecoderLayer(seg_len, d_model, n_heads, d_ff, dropout, \
-                                                   out_seg_num, factor))
+            self.decode_layers.append(
+                DecoderLayer(in_len, out_len, data_dim, dwin_size, seg_len, d_model, n_heads, d_ff, dropout, \
+                             out_seg_num, factor))
 
     def forward(self, x, cross):
         final_predict = None
@@ -81,3 +86,4 @@ class Decoder(nn.Module):
         final_predict = rearrange(final_predict, 'b (out_d seg_num) seg_len -> b (seg_num seg_len) out_d', out_d=ts_d)
 
         return final_predict
+

@@ -49,7 +49,7 @@ class scale_block(nn.Module):
     We set depth = 1 in the paper
     '''
 
-    def __init__(self, win_size, d_model, n_heads, d_ff, depth, dropout, \
+    def __init__(self, in_len, out_len, data_dim, dwin_size, seg_len, win_size, d_model, n_heads, d_ff, depth, dropout, \
                  seg_num=10, factor=10):
         super(scale_block, self).__init__()
 
@@ -59,13 +59,12 @@ class scale_block(nn.Module):
             self.merge_layer = None
 
         self.encode_layers = nn.ModuleList()
-
+# seq_len, pred_len, channel, win_size, seg_len, seg_num, factor, d_model, n_heads, d_ff=None, dropout=0.1
         for i in range(depth):
-            self.encode_layers.append(TwoStageAttentionLayer(seg_num, factor, d_model, n_heads, \
-                                                             d_ff, dropout))
+            self.encode_layers.append(TwoStageAttentionLayer(in_len, out_len, data_dim, dwin_size, seg_len, seg_num, factor, d_model, n_heads, d_ff, dropout))
 
     def forward(self, x):
-        _, ts_dim, _, _ = x.shape
+        # _, ts_dim, _, _ = x.shape
 
         if self.merge_layer is not None:
             x = self.merge_layer(x)
@@ -81,15 +80,15 @@ class Encoder(nn.Module):
     The Encoder of Crossformer.
     '''
 
-    def __init__(self, e_blocks, win_size, d_model, n_heads, d_ff, block_depth, dropout,
+    def __init__(self, in_len, out_len, data_dim, dwin_size, seg_len, e_blocks, win_size, d_model, n_heads, d_ff, block_depth, dropout,
                  in_seg_num=10, factor=10):
         super(Encoder, self).__init__()
         self.encode_blocks = nn.ModuleList()
-
-        self.encode_blocks.append(scale_block(1, d_model, n_heads, d_ff, block_depth, dropout, \
+# in_len, out_len, data_dim, dwin_size, win_size, d_model, n_heads, d_ff, depth, dropout, seg_num=10, factor=10
+        self.encode_blocks.append(scale_block(in_len, out_len, data_dim, dwin_size, seg_len, 1, d_model, n_heads, d_ff, block_depth, dropout, \
                                               in_seg_num, factor))
         for i in range(1, e_blocks):
-            self.encode_blocks.append(scale_block(win_size, d_model, n_heads, d_ff, block_depth, dropout, \
+            self.encode_blocks.append(scale_block(in_len, out_len, data_dim, dwin_size, seg_len, win_size, d_model, n_heads, d_ff, block_depth, dropout, \
                                                   ceil(in_seg_num / win_size ** i), factor))
 
     def forward(self, x):

@@ -5,7 +5,7 @@ from einops import rearrange, repeat
 
 from cross_models.cross_encoder import Encoder
 from cross_models.cross_decoder import Decoder
-from cross_models.attn import FullAttention, AttentionLayer, TwoStageAttentionLayer, DLinear
+from cross_models.attn import FullAttention, AttentionLayer, TwoStageAttentionLayer
 from cross_models.cross_embed import DSW_embedding
 
 from math import ceil
@@ -20,13 +20,6 @@ class Crossformer(nn.Module):
         self.in_len = in_len
         self.out_len = out_len
         self.seg_len = seg_len
-
-        self.dwin_size = dwin_size
-        self.DLinearLayer = DLinear(in_len, out_len, data_dim, dwin_size)
-        self.dlinear2cda = nn.Linear(out_len, in_len)
-        self.norm1 = nn.LayerNorm(in_len)
-        self.dsw = DSW_embedding(seg_len, d_model)
-
         self.merge_win = win_size
 
         self.baseline = baseline
@@ -38,15 +31,15 @@ class Crossformer(nn.Module):
         self.pad_out_len = ceil(1.0 * out_len / seg_len) * seg_len
         self.in_len_add = self.pad_in_len - self.in_len
 
-
+        # Embedding
+#self, in_len, out_len, data_dim, dwin_size, e_blocks, win_size, d_model, n_heads, d_ff, block_depth, dropout, in_seg_num=10, factor=10
         # Encoder
-        self.encoder = Encoder(e_layers, win_size, d_model, n_heads, d_ff, block_depth=1, \
+        self.encoder = Encoder(in_len, out_len, data_dim, dwin_size, seg_len, e_layers, win_size, d_model, n_heads, d_ff, block_depth=1, \
                                dropout=dropout, in_seg_num=(self.pad_in_len // seg_len), factor=factor)
 
-        # Decoder
+        # Decoder:in_len, out_len, data_dim, dwin_size, seg_len, d_model, n_heads, d_ff=None, dropout=0.1, out_seg_num = 10, factor = 10
         self.dec_pos_embedding = nn.Parameter(torch.randn(1, data_dim, (self.pad_out_len // seg_len), d_model))
-        self.decoder = Decoder(seg_len, e_layers + 1, d_model, n_heads, d_ff, dropout, \
-                               out_seg_num=(self.pad_out_len // seg_len), factor=factor)
+        self.decoder = Decoder(in_len, out_len, data_dim, dwin_size, seg_len, e_layers + 1, d_model, n_heads, d_ff, dropout,out_seg_num = (self.pad_out_len // seg_len),factor = factor)
 
     def forward(self, x_seq):
         if (self.baseline):
@@ -56,10 +49,8 @@ class Crossformer(nn.Module):
         batch_size = x_seq.shape[0]
         if (self.in_len_add != 0):
             x_seq = torch.cat((x_seq[:, :1, :].expand(-1, self.in_len_add, -1), x_seq), dim=1)
-        dlinear_output = self.DLinearLayer(x_seq)
-        dim_in = self.norm1(self.dlinear2cda(dlinear_output)).transpose(1, 2)
-        dim_embed = self.dsw(dim_in)
-        enc_out = self.encoder(dim_embed)
+
+        enc_out = self.encoder(x_seq)
 
         dec_in = repeat(self.dec_pos_embedding, 'b ts_d l d -> (repeat b) ts_d l d', repeat=batch_size)
         predict_y = self.decoder(dec_in, enc_out)
