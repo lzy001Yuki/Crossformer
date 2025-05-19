@@ -36,8 +36,6 @@ class DLinear(nn.Module):
             self.trend_layer.append(nn.Linear(self.seq_len, self.pred_len))
             self.res_layer.append(nn.Linear(self.seq_len, self.pred_len))
     def forward(self, x):
-        print("Dlinear")
-        print(x.shape)
         batch, seq_len, dim = x.shape
         x = x.transpose(1, 2)
         res, mean = self.decomposition(x)
@@ -114,45 +112,35 @@ class TwoStageAttentionLayer(nn.Module):
     input/output shape: [batch_size, Data_dim(D), Seg_num(L), d_model]
     '''
 
-# idea:
-# in layer1: use Dlinear
-    def __init__(self, seq_len, pred_len, channel, win_size, seg_len, seg_num, factor, d_model, n_heads, d_ff=None, dropout=0.1):
+    def __init__(self, seg_num, factor, d_model, n_heads, d_ff=None, dropout=0.1):
         super(TwoStageAttentionLayer, self).__init__()
         d_ff = d_ff or 4 * d_model
-        self.DLinearLayer = DLinear(seq_len, pred_len, channel, win_size)
-        self.dsw = DSW_embedding(seg_len, d_model)
-        self.dlinear2cda = nn.Linear(pred_len, seq_len)
         self.dim_sender = AttentionLayer(d_model, n_heads, dropout=dropout)
         self.dim_receiver = AttentionLayer(d_model, n_heads, dropout=dropout)
         self.router = nn.Parameter(torch.randn(seg_num, factor, d_model))
 
         self.dropout = nn.Dropout(dropout)
 
-        self.norm1 = nn.LayerNorm(seq_len)
+        self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
         self.norm3 = nn.LayerNorm(d_model)
-        self.MLP = nn.Sequential(nn.Linear(d_model, d_ff),
+        self.norm4 = nn.LayerNorm(d_model)
+        self.MLP2 = nn.Sequential(nn.Linear(d_model, d_ff),
                                   nn.GELU(),
                                   nn.Linear(d_ff, d_model))
 
     def forward(self, x):
-        # Cross Time Stage: Directly apply MSA to each dimension
         batch = x.shape[0]
-        dlinear_output = self.DLinearLayer(x)
-        dim_in = self.norm1(self.dlinear2cda(dlinear_output)).transpose(1, 2)
-        dim_embed = self.dsw(dim_in)
-
         # Cross Dimension Stage: use a small set of learnable vectors to aggregate and distribute messages to build the D-to-D connection
-        dim_send = rearrange(dim_embed, 'b ts_d seg_num d_model -> (b seg_num) ts_d d_model', b=batch)
+        dim_send = rearrange(x, 'b ts_d seg_num d_model -> (b seg_num) ts_d d_model', b=batch)
         batch_router = repeat(self.router, 'seg_num factor d_model -> (repeat seg_num) factor d_model', repeat=batch)
         dim_buffer = self.dim_sender(batch_router, dim_send, dim_send)
         dim_receive = self.dim_receiver(dim_send, dim_buffer, dim_buffer)
         dim_enc = dim_send + self.dropout(dim_receive)
-        dim_enc = self.norm2(dim_enc)
-        dim_enc = dim_enc + self.dropout(self.MLP(dim_enc))
         dim_enc = self.norm3(dim_enc)
+        dim_enc = dim_enc + self.dropout(self.MLP2(dim_enc))
+        dim_enc = self.norm4(dim_enc)
 
         final_out = rearrange(dim_enc, '(b seg_num) ts_d d_model -> b ts_d seg_num d_model', b=batch)
-        print("TSA finished...output size:")
-        print(final_out.shape)
+
         return final_out
