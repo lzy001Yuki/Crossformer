@@ -78,7 +78,7 @@ Exp = Exp_crossformer
 
 for ii in range(args.itr):
     # setting record of experiments
-    setting = 'Crossformer_{}_il{}_ol{}_sl{}_win{}_dwin{}_fa{}_dm{}_nh{}_el{}_itr{}'.format(args.data,
+    setting = 'Decoformer_{}_il{}_ol{}_sl{}_win{}_dwin{}_fa{}_dm{}_nh{}_el{}_itr{}'.format(args.data,
                 args.in_len, args.out_len, args.seg_len, args.win_size, args.dwin_size, args.factor,
                 args.d_model, args.n_heads, args.e_layers, ii)
 

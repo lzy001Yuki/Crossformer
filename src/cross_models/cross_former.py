@@ -47,7 +47,7 @@ class Crossformer(nn.Module):
         self.dec_pos_embedding = nn.Parameter(torch.randn(1, data_dim, (self.pad_out_len // seg_len), d_model))
         self.decoder = Decoder(seg_len, e_layers + 1, d_model, n_heads, d_ff, dropout, \
                                out_seg_num=(self.pad_out_len // seg_len), factor=factor)
-        self.alpha = nn.Parameter(torch.tensor(0.5), requires_grad=True)
+        self.alpha = nn.Parameter(torch.tensor(0.4), requires_grad=True)
 
     def forward(self, x_seq):
         if (self.baseline):

@@ -1,0 +1,84 @@
+Args in experiment:
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=45, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=0.0001, lradj='type1', itr=5, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+start training......
+Validation loss decreased (inf --> 1.357711).  Saving model ...
+Validation loss decreased (1.357711 --> 1.307366).  Saving model ...
+Updating learning rate to 5e-05
+EarlyStopping counter: 1 out of 3
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 2.5e-05
+EarlyStopping counter: 3 out of 3
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.8022421002388, mae:0.6885672807693481
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+start training......
+Validation loss decreased (inf --> 1.346701).  Saving model ...
+Validation loss decreased (1.346701 --> 1.330176).  Saving model ...
+Updating learning rate to 5e-05
+EarlyStopping counter: 1 out of 3
+Validation loss decreased (1.330176 --> 1.328716).  Saving model ...
+Updating learning rate to 2.5e-05
+Validation loss decreased (1.328716 --> 1.297855).  Saving model ...
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.25e-05
+EarlyStopping counter: 2 out of 3
+EarlyStopping counter: 3 out of 3
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.7914454936981201, mae:0.6818612217903137
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr2>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+start training......
+Validation loss decreased (inf --> 1.327885).  Saving model ...
+Validation loss decreased (1.327885 --> 1.324185).  Saving model ...
+Updating learning rate to 5e-05
+EarlyStopping counter: 1 out of 3
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 2.5e-05
+EarlyStopping counter: 3 out of 3
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.7765752673149109, mae:0.674583375453949
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr3>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+start training......
+Validation loss decreased (inf --> 1.406661).  Saving model ...
+Validation loss decreased (1.406661 --> 1.310479).  Saving model ...
+Updating learning rate to 5e-05
+EarlyStopping counter: 1 out of 3
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 2.5e-05
+EarlyStopping counter: 3 out of 3
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.7836933732032776, mae:0.6773258447647095
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr4>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+start training......
+Validation loss decreased (inf --> 1.275501).  Saving model ...
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 5e-05
+EarlyStopping counter: 2 out of 3
+EarlyStopping counter: 3 out of 3
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr4<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.5986522436141968, mae:0.5683072209358215

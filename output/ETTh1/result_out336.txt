@@ -1,50 +1,19 @@
 Args in experiment:
-Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=336, seg_len=12, win_size=2, factor=10, dwin_size=23, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=336, seg_len=24, win_size=2, factor=10, dwin_size=43, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=5, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
 Use GPU: cuda:0
->>>>>>>start training : Crossformer_ETTh1_il96_ol336_sl12_win2_dwin23_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>start training : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin43_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 8209
 val 2545
 test 2545
 start training......
-	iters: 100, epoch: 1 | loss: 0.5475764
-	speed: 0.0381s/iter; left time: 192.0417s
-	iters: 200, epoch: 1 | loss: 0.5426023
-	speed: 0.0347s/iter; left time: 171.6378s
-Epoch: 1 cost time: 9.382965803146362
-Epoch: 1, Steps: 257 | Train Loss: 0.5932771 Vali Loss: 1.2549138 Test Loss: 0.4988214
-Validation loss decreased (inf --> 1.254914).  Saving model ...
-	iters: 100, epoch: 2 | loss: 0.4077287
-	speed: 0.0326s/iter; left time: 155.8676s
-	iters: 200, epoch: 2 | loss: 0.4624803
-	speed: 0.0326s/iter; left time: 152.7564s
-Epoch: 2 cost time: 8.388295888900757
-Epoch: 2, Steps: 257 | Train Loss: 0.4357322 Vali Loss: 1.2187198 Test Loss: 0.5768724
-Validation loss decreased (1.254914 --> 1.218720).  Saving model ...
+Validation loss decreased (inf --> 1.065064).  Saving model ...
+EarlyStopping counter: 1 out of 5
 Updating learning rate to 5e-05
-	iters: 100, epoch: 3 | loss: 0.3520139
-	speed: 0.0324s/iter; left time: 146.8558s
-	iters: 200, epoch: 3 | loss: 0.3816875
-	speed: 0.0327s/iter; left time: 144.8116s
-Epoch: 3 cost time: 8.390644311904907
-Epoch: 3, Steps: 257 | Train Loss: 0.4079771 Vali Loss: 1.2211213 Test Loss: 0.6392297
-EarlyStopping counter: 1 out of 3
-	iters: 100, epoch: 4 | loss: 0.4718605
-	speed: 0.0328s/iter; left time: 140.1200s
-	iters: 200, epoch: 4 | loss: 0.3629804
-	speed: 0.0324s/iter; left time: 134.9309s
-Epoch: 4 cost time: 8.379107475280762
-Epoch: 4, Steps: 257 | Train Loss: 0.3936026 Vali Loss: 1.2556763 Test Loss: 0.7154377
-EarlyStopping counter: 2 out of 3
+EarlyStopping counter: 2 out of 5
+EarlyStopping counter: 3 out of 5
 Updating learning rate to 2.5e-05
-	iters: 100, epoch: 5 | loss: 0.4171301
-	speed: 0.0327s/iter; left time: 131.2678s
-	iters: 200, epoch: 5 | loss: 0.4003552
-	speed: 0.0325s/iter; left time: 127.0728s
-Epoch: 5 cost time: 8.374199628829956
-Epoch: 5, Steps: 257 | Train Loss: 0.3813290 Vali Loss: 1.2765686 Test Loss: 0.7614360
-EarlyStopping counter: 3 out of 3
-Early stopping
-Loss plot saved to ./loss_plot.png
->>>>>>>testing : Crossformer_ETTh1_il96_ol336_sl12_win2_dwin23_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+EarlyStopping counter: 4 out of 5
+EarlyStopping counter: 5 out of 5
+>>>>>>>testing : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin43_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2545
-mse:0.5746532082557678, mae:0.5228120684623718
+mse:0.5559276938438416, mae:0.5284407734870911

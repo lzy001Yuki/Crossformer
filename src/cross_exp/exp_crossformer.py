@@ -135,29 +135,29 @@ class Exp_crossformer(Exp_Basic):
                 train_loss.append(loss.item())
                 
                 if (i+1) % 100==0:
-                    print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
+                    #print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
                     speed = (time.time()-time_now)/iter_count
                     left_time = speed*((self.args.train_epochs - epoch)*train_steps - i)
-                    print('\tspeed: {:.4f}s/iter; left time: {:.4f}s'.format(speed, left_time))
+                    #print('\tspeed: {:.4f}s/iter; left time: {:.4f}s'.format(speed, left_time))
                     iter_count = 0
                     time_now = time.time()
                 
                 loss.backward()
                 model_optim.step()
             
-            print("Epoch: {} cost time: {}".format(epoch+1, time.time()-epoch_time))
+            #print("Epoch: {} cost time: {}".format(epoch+1, time.time()-epoch_time))
             train_loss = np.average(train_loss)
             vali_loss = self.vali(vali_data, vali_loader, criterion)
             test_loss = self.vali(test_data, test_loader, criterion)
 
-            print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
-                epoch + 1, train_steps, train_loss, vali_loss, test_loss))
+            #print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
+                #epoch + 1, train_steps, train_loss, vali_loss, test_loss))
             total_vali.append(vali_loss)
             total_test.append(test_loss)
             total_train.append(train_loss)
             early_stopping(vali_loss, self.model, path)
             if early_stopping.early_stop:
-                print("Early stopping")
+                #print("Early stopping")
                 break
 
             adjust_learning_rate(model_optim, epoch+1, self.args)
@@ -313,5 +313,5 @@ def show_loss(train_losses, vali_losses, test_losses, save_path='./loss_plot.png
     plt.savefig(save_path)
     plt.close()
 
-    print(f"Loss plot saved to {save_path}")
+    #print(f"Loss plot saved to {save_path}")
 

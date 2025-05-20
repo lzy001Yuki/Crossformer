@@ -1,0 +1,42 @@
+Args in experiment:
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=720, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=23, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il720_ol720_sl24_win2_dwin23_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7201
+val 2161
+test 2161
+start training......
+	iters: 100, epoch: 1 | loss: 0.5042644
+	speed: 0.0362s/iter; left time: 160.0385s
+	iters: 200, epoch: 1 | loss: 0.4612967
+	speed: 0.0332s/iter; left time: 143.6152s
+Epoch: 1 cost time: 7.810565233230591
+Epoch: 1, Steps: 226 | Train Loss: 0.5375266 Vali Loss: 1.2887135 Test Loss: 0.6348127
+Validation loss decreased (inf --> 1.288713).  Saving model ...
+	iters: 100, epoch: 2 | loss: 0.3788303
+	speed: 0.0322s/iter; left time: 135.0204s
+	iters: 200, epoch: 2 | loss: 0.3576923
+	speed: 0.0322s/iter; left time: 132.0532s
+Epoch: 2 cost time: 7.307634353637695
+Epoch: 2, Steps: 226 | Train Loss: 0.3900413 Vali Loss: 1.3945881 Test Loss: 1.1726976
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 5e-05
+	iters: 100, epoch: 3 | loss: 0.3623875
+	speed: 0.0324s/iter; left time: 128.6995s
+	iters: 200, epoch: 3 | loss: 0.3442476
+	speed: 0.0323s/iter; left time: 124.8238s
+Epoch: 3 cost time: 7.325188159942627
+Epoch: 3, Steps: 226 | Train Loss: 0.3479603 Vali Loss: 1.4739952 Test Loss: 1.0206240
+EarlyStopping counter: 2 out of 3
+	iters: 100, epoch: 4 | loss: 0.3174262
+	speed: 0.0323s/iter; left time: 120.8623s
+	iters: 200, epoch: 4 | loss: 0.3204749
+	speed: 0.0323s/iter; left time: 117.5491s
+Epoch: 4 cost time: 7.314867258071899
+Epoch: 4, Steps: 226 | Train Loss: 0.3327215 Vali Loss: 1.4339380 Test Loss: 1.0390149
+EarlyStopping counter: 3 out of 3
+Early stopping
+Loss plot saved to ./loss_plot.png
+>>>>>>>testing : Decoformer_ETTh1_il720_ol720_sl24_win2_dwin23_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.63385009765625, mae:0.5743090510368347
