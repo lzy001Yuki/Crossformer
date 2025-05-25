@@ -1,0 +1,73 @@
+Args in experiment:
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=105, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=1e-05, lradj='type1', itr=5, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 12.189760208129883
+Epoch: 2 cost time: 11.547955751419067
+Epoch: 3 cost time: 11.666027307510376
+Epoch: 4 cost time: 11.59277606010437
+Epoch: 5 cost time: 11.766270399093628
+Epoch: 6 cost time: 11.86723804473877
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.49579864740371704, mae:0.5052262544631958
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 12.061163425445557
+Epoch: 2 cost time: 12.680486679077148
+Epoch: 3 cost time: 12.153061866760254
+Epoch: 4 cost time: 12.69040036201477
+Epoch: 5 cost time: 11.542656183242798
+Epoch: 6 cost time: 11.594696044921875
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.5055443644523621, mae:0.5136348009109497
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr2>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 12.304436922073364
+Epoch: 2 cost time: 11.73755931854248
+Epoch: 3 cost time: 11.774854898452759
+Epoch: 4 cost time: 11.814022779464722
+Epoch: 5 cost time: 11.785687923431396
+Epoch: 6 cost time: 11.70019006729126
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.4953390061855316, mae:0.5046067833900452
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr3>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 11.82202696800232
+Epoch: 2 cost time: 11.477802991867065
+Epoch: 3 cost time: 11.467119216918945
+Epoch: 4 cost time: 11.745164155960083
+Epoch: 5 cost time: 11.37194037437439
+Epoch: 6 cost time: 11.499705076217651
+Epoch: 7 cost time: 11.876508235931396
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.49265357851982117, mae:0.5034315586090088
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr4>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 11.679589986801147
+Epoch: 2 cost time: 11.334435939788818
+Epoch: 3 cost time: 11.75623345375061
+Epoch: 4 cost time: 11.627211093902588
+Epoch: 5 cost time: 12.023014545440674
+Epoch: 6 cost time: 12.099932193756104
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin105_fa10_dm256_nh4_el3_itr4<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.49655818939208984, mae:0.5063378214836121

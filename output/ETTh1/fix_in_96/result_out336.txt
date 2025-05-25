@@ -1,19 +1,30 @@
 Args in experiment:
-Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=336, seg_len=24, win_size=2, factor=10, dwin_size=43, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=5, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=336, seg_len=24, win_size=2, factor=10, dwin_size=25, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=2, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=5, learning_rate=1e-05, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
 Use GPU: cuda:0
->>>>>>>start training : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin43_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>start training : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin25_fa10_dm256_nh4_el2_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 8209
 val 2545
 test 2545
-start training......
-Validation loss decreased (inf --> 1.065064).  Saving model ...
-EarlyStopping counter: 1 out of 5
-Updating learning rate to 5e-05
-EarlyStopping counter: 2 out of 5
-EarlyStopping counter: 3 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 4 out of 5
-EarlyStopping counter: 5 out of 5
->>>>>>>testing : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin43_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Epoch: 1 cost time: 9.334644556045532
+Epoch: 2 cost time: 8.975526332855225
+Epoch: 3 cost time: 9.050001382827759
+Epoch: 4 cost time: 8.651248455047607
+Epoch: 5 cost time: 8.759212493896484
+Epoch: 6 cost time: 9.051217317581177
+Epoch: 7 cost time: 8.844355344772339
+Epoch: 8 cost time: 8.846696376800537
+Epoch: 9 cost time: 8.6666841506958
+Epoch: 10 cost time: 8.740489721298218
+Epoch: 11 cost time: 9.177517890930176
+Epoch: 12 cost time: 8.920576333999634
+Epoch: 13 cost time: 8.686339139938354
+Epoch: 14 cost time: 8.498457431793213
+Epoch: 15 cost time: 8.900990009307861
+Epoch: 16 cost time: 9.13848066329956
+Epoch: 17 cost time: 9.146697759628296
+Epoch: 18 cost time: 8.333239793777466
+Epoch: 19 cost time: 8.865213394165039
+Epoch: 20 cost time: 8.401201725006104
+>>>>>>>testing : Decoformer_ETTh1_il96_ol336_sl24_win2_dwin25_fa10_dm256_nh4_el2_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2545
-mse:0.5559276938438416, mae:0.5284407734870911
+mse:0.4818570911884308, mae:0.4739294648170471

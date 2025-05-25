@@ -1,91 +1,72 @@
 Args in experiment:
-Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=15, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=5, learning_rate=0.0001, lradj='type1', itr=5, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=15, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=1e-05, lradj='type1', itr=5, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
 Use GPU: cuda:0
 >>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-Validation loss decreased (inf --> 1.312615).  Saving model ...
-Validation loss decreased (1.312615 --> 1.282259).  Saving model ...
-Updating learning rate to 5e-05
-EarlyStopping counter: 1 out of 5
-EarlyStopping counter: 2 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 3 out of 5
-EarlyStopping counter: 4 out of 5
-Updating learning rate to 1.25e-05
-EarlyStopping counter: 5 out of 5
+Epoch: 1 cost time: 12.257804870605469
+Epoch: 2 cost time: 11.76677942276001
+Epoch: 3 cost time: 11.835336208343506
+Epoch: 4 cost time: 11.907828092575073
+Epoch: 5 cost time: 11.890506982803345
+Epoch: 6 cost time: 11.666541814804077
 >>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.7819510698318481, mae:0.6758888959884644
+mse:0.49936643242836, mae:0.5084335803985596
 Use GPU: cuda:0
 >>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr1>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-Validation loss decreased (inf --> 1.245326).  Saving model ...
-EarlyStopping counter: 1 out of 5
-Updating learning rate to 5e-05
-EarlyStopping counter: 2 out of 5
-EarlyStopping counter: 3 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 4 out of 5
-EarlyStopping counter: 5 out of 5
+Epoch: 1 cost time: 11.927691459655762
+Epoch: 2 cost time: 11.666394710540771
+Epoch: 3 cost time: 12.059016704559326
+Epoch: 4 cost time: 12.432372093200684
+Epoch: 5 cost time: 12.678357601165771
+Epoch: 6 cost time: 11.895286083221436
 >>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.7009202837944031, mae:0.6357977986335754
+mse:0.5012012124061584, mae:0.510301411151886
 Use GPU: cuda:0
 >>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr2>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-Validation loss decreased (inf --> 1.254004).  Saving model ...
-EarlyStopping counter: 1 out of 5
-Updating learning rate to 5e-05
-EarlyStopping counter: 2 out of 5
-EarlyStopping counter: 3 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 4 out of 5
-EarlyStopping counter: 5 out of 5
+Epoch: 1 cost time: 12.081309795379639
+Epoch: 2 cost time: 11.793888330459595
+Epoch: 3 cost time: 11.628726959228516
+Epoch: 4 cost time: 11.944186687469482
+Epoch: 5 cost time: 12.108379364013672
+Epoch: 6 cost time: 11.649893283843994
+Epoch: 7 cost time: 11.611896991729736
 >>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.6422424912452698, mae:0.5959328413009644
+mse:0.5035037398338318, mae:0.5115759372711182
 Use GPU: cuda:0
 >>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr3>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-Validation loss decreased (inf --> 1.270935).  Saving model ...
-Validation loss decreased (1.270935 --> 1.261551).  Saving model ...
-Updating learning rate to 5e-05
-EarlyStopping counter: 1 out of 5
-EarlyStopping counter: 2 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 3 out of 5
-EarlyStopping counter: 4 out of 5
-Updating learning rate to 1.25e-05
-EarlyStopping counter: 5 out of 5
+Epoch: 1 cost time: 11.761431694030762
+Epoch: 2 cost time: 11.48635220527649
+Epoch: 3 cost time: 11.521222829818726
+Epoch: 4 cost time: 11.829257249832153
+Epoch: 5 cost time: 11.545542001724243
+Epoch: 6 cost time: 11.821713924407959
 >>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.9340476393699646, mae:0.7634934782981873
+mse:0.49781814217567444, mae:0.5076297521591187
 Use GPU: cuda:0
 >>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr4>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-Validation loss decreased (inf --> 1.347622).  Saving model ...
-EarlyStopping counter: 1 out of 5
-Updating learning rate to 5e-05
-EarlyStopping counter: 2 out of 5
-EarlyStopping counter: 3 out of 5
-Updating learning rate to 2.5e-05
-EarlyStopping counter: 4 out of 5
-EarlyStopping counter: 5 out of 5
+Epoch: 1 cost time: 11.77394413948059
+Epoch: 2 cost time: 11.921952962875366
+Epoch: 3 cost time: 12.071232080459595
+Epoch: 4 cost time: 11.505281209945679
+Epoch: 5 cost time: 11.929428100585938
 >>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin15_fa10_dm256_nh4_el3_itr4<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.5324704051017761, mae:0.5242634415626526
+mse:0.5140438675880432, mae:0.5198558568954468

@@ -1,0 +1,18 @@
+Args in experiment:
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=215, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=1e-05, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Use GPU: cuda:0
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin215_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+Epoch: 1 cost time: 12.125834941864014
+Epoch: 2 cost time: 12.300467729568481
+Epoch: 3 cost time: 12.070283889770508
+Epoch: 4 cost time: 12.036978006362915
+Epoch: 5 cost time: 12.645381689071655
+Epoch: 6 cost time: 11.912895917892456
+Epoch: 7 cost time: 11.875508546829224
+Epoch: 8 cost time: 12.59419059753418
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin215_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.4967970848083496, mae:0.5079013109207153

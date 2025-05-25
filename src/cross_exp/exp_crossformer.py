@@ -114,7 +114,7 @@ class Exp_crossformer(Exp_Basic):
         model_optim = self._select_optimizer()
         criterion =  self._select_criterion()
 
-        print("start training......")
+        #print("start training......")
         total_train = []
         total_vali = []
         total_test = []

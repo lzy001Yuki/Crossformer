@@ -1,42 +1,19 @@
 Args in experiment:
-Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=45, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=3, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=3, learning_rate=0.0001, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
+Namespace(data='ETTh1', root_path='./datasets/', data_path='ETTh1.csv', data_split=[8640, 2880, 2880], checkpoints='./checkpoints/', in_len=96, out_len=720, seg_len=24, win_size=2, factor=10, dwin_size=25, data_dim=7, d_model=256, d_ff=512, n_heads=4, e_layers=2, dropout=0.2, baseline=False, num_workers=0, batch_size=32, train_epochs=20, patience=5, learning_rate=1e-05, lradj='type1', itr=1, save_pred=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0')
 Use GPU: cuda:0
->>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>start training : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin25_fa10_dm256_nh4_el2_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
 train 7825
 val 2161
 test 2161
-start training......
-	iters: 100, epoch: 1 | loss: 0.5902688
-	speed: 0.0350s/iter; left time: 168.2114s
-	iters: 200, epoch: 1 | loss: 0.4448756
-	speed: 0.0323s/iter; left time: 151.7611s
-Epoch: 1 cost time: 8.204495191574097
-Epoch: 1, Steps: 245 | Train Loss: 0.5736714 Vali Loss: 1.2944040 Test Loss: 0.6247974
-Validation loss decreased (inf --> 1.294404).  Saving model ...
-	iters: 100, epoch: 2 | loss: 0.4852789
-	speed: 0.0321s/iter; left time: 146.0310s
-	iters: 200, epoch: 2 | loss: 0.4818670
-	speed: 0.0319s/iter; left time: 142.3444s
-Epoch: 2 cost time: 7.871131896972656
-Epoch: 2, Steps: 245 | Train Loss: 0.4691975 Vali Loss: 1.2996089 Test Loss: 0.7474965
-EarlyStopping counter: 1 out of 3
-Updating learning rate to 5e-05
-	iters: 100, epoch: 3 | loss: 0.4498104
-	speed: 0.0321s/iter; left time: 138.5217s
-	iters: 200, epoch: 3 | loss: 0.4182513
-	speed: 0.0323s/iter; left time: 136.1435s
-Epoch: 3 cost time: 7.913045167922974
-Epoch: 3, Steps: 245 | Train Loss: 0.4338021 Vali Loss: 1.3671849 Test Loss: 0.8834669
-EarlyStopping counter: 2 out of 3
-	iters: 100, epoch: 4 | loss: 0.4373476
-	speed: 0.0320s/iter; left time: 130.2353s
-	iters: 200, epoch: 4 | loss: 0.3754581
-	speed: 0.0320s/iter; left time: 127.0299s
-Epoch: 4 cost time: 7.865766763687134
-Epoch: 4, Steps: 245 | Train Loss: 0.4125900 Vali Loss: 1.3951558 Test Loss: 0.9084061
-EarlyStopping counter: 3 out of 3
-Early stopping
-Loss plot saved to ./loss_plot.png
->>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin45_fa10_dm256_nh4_el3_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Epoch: 1 cost time: 9.357841968536377
+Epoch: 2 cost time: 8.404730081558228
+Epoch: 3 cost time: 8.580451250076294
+Epoch: 4 cost time: 8.762545585632324
+Epoch: 5 cost time: 8.65680980682373
+Epoch: 6 cost time: 8.127878189086914
+Epoch: 7 cost time: 8.721481084823608
+Epoch: 8 cost time: 9.122858047485352
+Epoch: 9 cost time: 8.96913766860962
+>>>>>>>testing : Decoformer_ETTh1_il96_ol720_sl24_win2_dwin25_fa10_dm256_nh4_el2_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 test 2161
-mse:0.6245660185813904, mae:0.580159604549408
+mse:0.5112711787223816, mae:0.5180508494377136
