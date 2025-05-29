@@ -8,12 +8,6 @@ Mechanism, this work removes CTS and integrates another model called Decompositi
 
 ![](Decoformer.png)
 
-After experimenting, hyper-parameters are suggested as follows：
-
-
-1) For short-term prediction($\tau=24,48,72$), set $seg\_len$ as 6, \textbf{$learning\_rate$} as $10^{-4}$, $e\_layers$ as 3, $dwin\_size$ as 23.
-2) For long-term prediction ($\tau=168, 672, 720$), set \textbf{$seg\_len$} as 24, \textbf{$learning\_rate$} as $10^{-5}$, $e\_layers$ as 2, $dwin\_size$ as 105.
-
 
 ## Project Structure
 
@@ -31,3 +25,33 @@ After experimenting, hyper-parameters are suggested as follows：
 ├── src                     # source code of Decoformer
 └── visualization
 ```
+
+## Run the Project
+
+```
+git clone https://github.com/Thinklab-SJTU/Crossformer # clone code for baseline model Crossformer
+bash scripts/eval.sh <datasets_id> <out_length> <in_length> <seg_length> <dwin_size> <learning_rate> <e_layers> <iteration_num>
+```
+
+Parameters explanation:
+
+1) `datasets_id`: 1 for `ETTh1`, 2 for `ETTm1`
+2) `in_length`: expected input length, in paper, we choose 96
+3) `out_length`: prediction output length
+4) `seg_length`: length of segment in dsw_embedding phase
+5) `dwin_size`: stride to form seasonal feature
+6) `learning_rate`: initial learning_rate
+7) `e_layers`: layers of encoder during HED structure
+8) `iteration_num`: experiment times
+
+After experimenting, these parameters are suggested as follows:
+
+| parameter          | short_term      | long_term |
+|:-------------------|:----------------|:----------|
+| out_length (EETh1) | 24, 48, 168     | 336, 720  |
+|out_length (ETTm1)| 24, 48, 96, 288 | 672       |
+| seg_length         | 6               | 24        |
+| dwin_size          | 23/25      | 23/25|
+| learning_rate      | 1e-4            | 1e-5      |
+| e_layers           | 3               | 2         |
+

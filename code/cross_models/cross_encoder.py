@@ -78,7 +78,7 @@ class scale_block(nn.Module):
 
 class Encoder(nn.Module):
     '''
-    The Encoder of src.
+    The Encoder of code.
     '''
 
     def __init__(self, e_blocks, win_size, d_model, n_heads, d_ff, block_depth, dropout,
